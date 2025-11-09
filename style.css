@@ -442,7 +442,7 @@ body.mobile-menu-open {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 14.4px;
+    font-size: 16px;
 }
 
 body {
@@ -697,7 +697,7 @@ body {
 
 .profile-name {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     margin: 15px auto 10px auto;
     color: #333;
     text-align: center;
@@ -707,7 +707,7 @@ body {
 
 .profile-bio {
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0 auto 20px auto;
     line-height: 1.5;
     text-align: left;
@@ -751,7 +751,7 @@ body {
     align-items: center;
     color: #333;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     transition: color 0.2s ease;
     gap: 10px;
 }
@@ -764,7 +764,7 @@ body {
 .profile-link-item i {
     width: 22px;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     color: #333;
 }
 
@@ -895,7 +895,7 @@ body {
     }
     
     .keyword-tag {
-        font-size: 0.9em;
+        font-size: 16px;
         padding: 6px 12px;
     }
 }
@@ -924,7 +924,7 @@ body {
 }
 
 .research-areas h3 {
-    font-size: 1.3em;
+    font-size: 16px;
     margin-bottom: 15px;
     color: #2c5aa0;
     font-weight: 600;
@@ -950,7 +950,7 @@ body {
 
 .research-list li strong {
     display: block;
-    font-size: 1.1em;
+    font-size: 16px;
     color: #2c5aa0;
     margin-bottom: 8px;
     font-weight: 600;
@@ -967,7 +967,7 @@ body {
 }
 
 .research-keywords h3 {
-    font-size: 1.3em;
+    font-size: 16px;
     margin-bottom: 15px;
     color: #2c5aa0;
     font-weight: 600;
@@ -1000,17 +1000,17 @@ body {
 }
 
 .keyword-small {
-    font-size: 0.85em;
+    font-size: 16px;
     padding: 6px 12px;
 }
 
 .keyword-medium {
-    font-size: 0.95em;
+    font-size: 16px;
     padding: 8px 16px;
 }
 
 .keyword-large {
-    font-size: 1.05em;
+    font-size: 16px;
     padding: 10px 20px;
     font-weight: 600;
 }
@@ -1072,7 +1072,7 @@ body {
 }
 
 .authors {
-    color: #777;
+    color: #333;
     margin-bottom: 4px;
 }
 
@@ -1095,6 +1095,18 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pub-links li {
+    margin: 0;
+    padding: 0;
+}
+
+.pub-links li:not(:has(a)) {
+    color: #2c5aa0;
 }
 
 .pub-links a {
@@ -1151,8 +1163,8 @@ body {
 }
 
 .project-description {
-    font-size: 14.4px;
-    color: #6C757D;
+    font-size: 16px;
+    color: #333;
     margin-bottom: 6px;
 }
 
@@ -1219,7 +1231,7 @@ body {
     padding: 4px 8px;
     border-radius: 0;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 16px;
     color: white;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -1239,16 +1251,18 @@ body {
 
 /* 蓝色徽标样式 */
 .badge-blue {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    padding-top: 0.1rem;
     position: absolute;
     margin-top: .5em;
     margin-left: -.5em;
     color: white;
     background-color: #00369f;
-    font-size: .8em;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: bold;
     z-index: 10;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* SVG Badge styles - 保留用于兼容 */
@@ -1300,8 +1314,8 @@ body {
 }
 
 .talk-description {
-    font-size: 14.4px;
-    color: #6C757D;
+    font-size: 16px;
+    color: #333;
     margin-bottom: 6px;
 }
 
@@ -1382,25 +1396,25 @@ body {
     font-weight: bold;
     color: #000;
     margin-bottom: 4px;
-    font-size: 14.4px;
+    font-size: 16px;
 }
 
 .edu-department {
     color: #000;
     margin-bottom: 4px;
-    font-size: 14.4px;
+    font-size: 16px;
 }
 
 .edu-degree {
     color: #000;
     font-weight: 500;
-    font-size: 14.4px;
+    font-size: 16px;
 }
 
 .edu-period {
     flex-shrink: 0;
     color: #000;
-    font-size: 14.4px;
+    font-size: 16px;
     text-align: right;
     min-width: 120px;
 }
