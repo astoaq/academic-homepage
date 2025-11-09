@@ -1366,7 +1366,7 @@ body {
 
 .education-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 25px;
     padding: 15px 0;
 }
@@ -1382,18 +1382,23 @@ body {
 }
 
 .university-logo {
-    width: 60px;
-    height: 60px;
+    width: 110px;
+    height: 110px;
     object-fit: contain;
+}
+
+.edu-text-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .edu-content {
     flex: 1;
-    margin-right: 20px;
 }
 
 .edu-institution {
-    font-weight: bold;
     color: #000;
     margin-bottom: 4px;
     font-size: 16px;
@@ -2316,12 +2321,6 @@ strong {
         text-align: left;
         gap: 15px;
     }
-
-    .university-logo {
-        width: 80px;
-        height: 80px;
-    }
-
     .news-list {
         max-height: 200px;
         overflow-y: scroll;
@@ -2501,6 +2500,11 @@ strong {
         height: 32px;
     }
 
+    .edu-text-wrapper {
+        flex-direction: column;
+        gap: 0;
+    }
+
     .edu-content {
         margin-right: 0;
         margin-bottom: 0;
@@ -2509,7 +2513,7 @@ strong {
     }
 
     .edu-institution {
-        font-size: 14.4px;
+        font-size: 16px;
         margin-bottom: 2px;
     }
 
@@ -2519,7 +2523,7 @@ strong {
     }
 
     .edu-degree {
-        font-size: 12px;
+        font-size: 16px;
         margin-bottom: 0;
     }
 
@@ -2890,9 +2894,9 @@ strong {
         display: none !important;
     }
 
-    .university-logo {
-        width: 35px;
-        height: 35px;
+    .edu-text-wrapper {
+        flex-direction: column;
+        gap: 0;
     }
 
     .edu-content {
@@ -3382,6 +3386,11 @@ strong {
         height: 28px;
     }
 
+    .edu-text-wrapper {
+        flex-direction: column;
+        gap: 0;
+    }
+
     .edu-content {
         margin-right: 0;
         margin-bottom: 0;
@@ -3389,17 +3398,17 @@ strong {
     }
 
     .edu-institution {
-        font-size: 14.4px;
+        font-size: 16px;
         margin-bottom: 2px;
     }
 
     .edu-department {
-        font-size: 14.4px;
+        font-size: 16px;
         margin-bottom: 1px;
     }
 
     .edu-degree {
-        font-size: 14.4px;
+        font-size: 16px;
         margin-bottom: 0;
     }
 
@@ -3411,7 +3420,7 @@ strong {
         display: block;
         text-align: left;
         min-width: auto;
-        font-size: 14.4px;
+        font-size: 16px;
         color: #000;
         font-weight: normal;
         margin-top: 3px;
