@@ -617,15 +617,8 @@ body {
 }
 
 [data-theme="dark"] .pub-links a,
-[data-theme="dark"] .project-links a,
-[data-theme="dark"] .talk-links a {
-    color: #70B7FD;
-}
-
-[data-theme="dark"] .pub-links a:hover,
-[data-theme="dark"] .project-links a:hover,
-[data-theme="dark"] .talk-links a:hover {
-    color: #8fc5ff;
+[data-theme="dark"] .project-links a {
+    color: #e0e0e0 !important;
 }
 
 [data-theme="dark"] .top-nav,
