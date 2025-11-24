@@ -1601,6 +1601,7 @@ section[id] {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 /* 年份筛选隐藏类 */
