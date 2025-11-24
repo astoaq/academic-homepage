@@ -1591,6 +1591,63 @@ section[id] {
 /* Publications 过滤头部 - 包含 corresponding author */
 .pub-filter-header {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 年份筛选按钮容器 */
+.year-filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* 年份筛选隐藏类 */
+.year-hidden {
+    display: none !important;
+}
+
+/* 年份筛选按钮样式 */
+.year-filter-btn {
+    padding: 5px 14px;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    color: #666;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    outline: none;
+}
+
+.year-filter-btn:hover {
+    background-color: #f5f5f5;
+    border-color: #ccc;
+}
+
+.year-filter-btn.active {
+    background-color: #2C5AA0;
+    color: white;
+    border-color: #2C5AA0;
+}
+
+/* 暗黑模式下的按钮样式 */
+[data-theme="dark"] .year-filter-btn {
+    border-color: #444;
+    color: #aaa;
+    background-color: transparent;
+}
+
+[data-theme="dark"] .year-filter-btn:hover {
+    background-color: #333;
+    border-color: #555;
+}
+
+[data-theme="dark"] .year-filter-btn.active {
+    background-color: #5B9BD5;
+    color: #1a1a1a;
+    border-color: #5B9BD5;
 }
 
 /* Corresponding Author Note */
@@ -2345,6 +2402,16 @@ section[id] {
 
     .container {
         padding: 60px 15px 20px;
+    }
+
+    /* 移动端年份筛选按钮样式 */
+    .year-filter-buttons {
+        justify-content: flex-start;
+    }
+
+    .year-filter-btn {
+        padding: 5px 14px;
+        font-size: 13px;
     }
 
     .header-content {
@@ -3486,6 +3553,12 @@ section[id] {
 @media (max-width: 500px) {
     .top-nav { height: 48px; }
     .nav-container { height: 48px; padding: 0 10px; }
+
+    /* 小屏幕年份筛选按钮样式 */
+    .year-filter-btn {
+        padding: 4px 12px;
+        font-size: 12px;
+    }
 }
 
 /* Hide GitHub Corner on mobile */

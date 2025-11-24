@@ -360,19 +360,65 @@ function disableUnderReviewLinks() {
 // Publications 初始化 - 显示所有文章和年份标题
 function setupPublicationsFilter() {
     const publicationsList = document.querySelector('.publications-list');
-    if (!publicationsList) return;
+    const filterButtons = document.querySelectorAll('.year-filter-btn');
 
-    // 显示所有年份标题
-    const yearHeaders = publicationsList.querySelectorAll('.year-header');
-    for (let i = 0; i < yearHeaders.length; i++) {
-        yearHeaders[i].style.display = 'block';
+    if (!publicationsList || filterButtons.length === 0) return;
+
+    // 筛选函数
+    function filterByYear(year) {
+        const yearHeaders = publicationsList.querySelectorAll('.year-header');
+        const allItems = publicationsList.querySelectorAll('.publication-item');
+
+        if (year === 'all') {
+            // 显示所有年份标题和文章
+            for (let i = 0; i < yearHeaders.length; i++) {
+                yearHeaders[i].classList.remove('year-hidden');
+            }
+            for (let i = 0; i < allItems.length; i++) {
+                allItems[i].classList.remove('year-hidden');
+            }
+        } else {
+            // 筛选年份标题
+            for (let i = 0; i < yearHeaders.length; i++) {
+                const headerYear = yearHeaders[i].getAttribute('data-year');
+                if (headerYear === year) {
+                    yearHeaders[i].classList.remove('year-hidden');
+                } else {
+                    yearHeaders[i].classList.add('year-hidden');
+                }
+            }
+            // 筛选文章
+            for (let i = 0; i < allItems.length; i++) {
+                const itemYear = allItems[i].getAttribute('data-year');
+                if (itemYear === year) {
+                    allItems[i].classList.remove('year-hidden');
+                } else {
+                    allItems[i].classList.add('year-hidden');
+                }
+            }
+        }
     }
 
-    // 显示所有文章
-    const allItems = publicationsList.querySelectorAll('.publication-item');
-    for (let i = 0; i < allItems.length; i++) {
-        allItems[i].style.display = 'flex';
-    }
+    // 为每个按钮添加点击事件
+    filterButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const year = this.getAttribute('data-year');
+
+            // 移除所有按钮的 active 类
+            filterButtons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+
+            // 为当前按钮添加 active 类
+            this.classList.add('active');
+
+            // 执行筛选
+            filterByYear(year);
+        });
+    });
+
+    // 初始化：显示所有文章
+    filterByYear('all');
 }
 
 // BibTeX 关键字高亮函数
