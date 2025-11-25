@@ -332,6 +332,10 @@ body.mobile-menu-open {
     width: calc(100% - 20px);
 }
 
+.nav-links a.active::after {
+    width: calc(100% - 20px);
+}
+
 .nav-links a:active {
     background-color: transparent !important;
 }
