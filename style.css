@@ -711,9 +711,9 @@ body {
 }
 
 .profile-link-item i {
-    width: 22px;
+    width: 28px;
     text-align: center;
-    font-size: 16px;
+    font-size: 24px;
     color: #333;
 }
 
@@ -1624,7 +1624,7 @@ section[id] {
     color: #666;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     outline: none;
 }
@@ -1660,7 +1660,7 @@ section[id] {
 
 /* Corresponding Author Note */
 .corresponding-author-note {
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     font-style: italic;
     margin: 0;
@@ -2283,6 +2283,11 @@ section[id] {
         justify-content: center;
     }
 
+    .profile-link-item i {
+        width: 28px;
+        font-size: 24px;
+    }
+
     .right-content {
         width: 100%;
         margin-left: 0; /* 移动端取消左边距 */
@@ -2804,6 +2809,11 @@ section[id] {
 
     .profile-link-item {
         justify-content: center;
+    }
+
+    .profile-link-item i {
+        width: 28px;
+        font-size: 28px;
     }
 
     .profile-photo img {
