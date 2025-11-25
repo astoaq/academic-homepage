@@ -797,19 +797,22 @@ document.addEventListener('DOMContentLoaded', function () {
             if (moonIcon) moonIcon.style.display = 'none';
         }
     }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeIcon(theme);
+    }
     
     // 初始化图标
     const currentTheme = document.documentElement.getAttribute('data-theme');
     updateThemeIcon(currentTheme);
     
-    // 切换主题
-    themeToggle.addEventListener('click', function () {
+    // 切换主题（带视图过渡）
+    themeToggle.addEventListener('click', function (event) {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+        applyTheme(newTheme);
     });
     
     // 监听系统主题变化
@@ -819,8 +822,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // 只有在用户没有手动设置主题时才跟随系统
             if (!localStorage.getItem('theme')) {
                 const newTheme = e.matches ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                updateThemeIcon(newTheme);
+                applyTheme(newTheme);
             }
         });
     }
