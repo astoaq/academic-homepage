@@ -9,17 +9,18 @@
     window.isProgrammaticScroll = false;
     let scrollTimeout;
 
-    // 滚动事件监听 - 持续保存滚动位置
-    function handleScroll() {
-        if (window.isProgrammaticScroll) {
-            return;
-        }
+    // 优化的滚动处理
+    let ticking = false;
+    function handleScrollOptimized() {
+        if (window.isProgrammaticScroll) return;
 
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(function() {
-            // 始终保存当前滚动位置
-            sessionStorage.setItem('scrollPosition', window.pageYOffset.toString());
-        }, 100);
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                sessionStorage.setItem('scrollPosition', window.pageYOffset.toString());
+                ticking = false;
+            });
+            ticking = true;
+        }
     }
 
     // DOM加载完成后的处理
@@ -35,8 +36,8 @@
             }
         }
 
-        // 添加滚动监听
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        // 添加统一的滚动监听
+        window.addEventListener('scroll', createUnifiedScrollHandler(), { passive: true });
 
         // 启用平滑滚动
         setTimeout(function() {
@@ -166,52 +167,80 @@ function setupSmoothScrolling() {
     });
 }
 
-function handleScroll() {
+// 统一的滚动处理器 - 合并所有滚动功能
+function createUnifiedScrollHandler() {
+    let scrollTicking = false;
+
+    // 缓存DOM元素
     const sections = document.querySelectorAll('section[id], header[id]');
     const desktopNavLinks = document.querySelectorAll('.desktop-nav a');
-    const navHeight = document.querySelector('.top-nav').offsetHeight;
-
-    window.addEventListener('scroll', function () {
-        let current = '';
-
-        if (window.pageYOffset < 100) {
-            current = '#home';
-        } else {
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - navHeight - 10;
-                const sectionHeight = section.offsetHeight;
-
-                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-                    current = '#' + section.getAttribute('id');
-                }
-            });
-        }
-
-        desktopNavLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === current) {
-                link.classList.add('active');
-            }
-        });
-    });
-}
-
-function handleNavbarScroll() {
     const topNav = document.querySelector('.top-nav');
     const navContainer = document.querySelector('.nav-container');
     const navTitle = document.querySelector('.nav-title a');
+    const backToTopButton = document.getElementById('backToTop');
 
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 50) {
-            topNav.classList.add('scrolled');
-            navContainer.classList.add('scrolled');
-            navTitle.classList.add('scrolled');
-        } else {
-            topNav.classList.remove('scrolled');
-            navContainer.classList.remove('scrolled');
-            navTitle.classList.remove('scrolled');
+    return function() {
+        if (!scrollTicking) {
+            requestAnimationFrame(function() {
+                const scrollY = window.pageYOffset;
+
+                // 保存滚动位置
+                if (!window.isProgrammaticScroll) {
+                    sessionStorage.setItem('scrollPosition', scrollY.toString());
+                }
+
+                // 导航高亮
+                if (topNav && sections.length > 0) {
+                    const navHeight = topNav.offsetHeight;
+                    let current = '';
+
+                    if (scrollY < 100) {
+                        current = '#home';
+                    } else {
+                        sections.forEach(section => {
+                            const sectionTop = section.offsetTop - navHeight - 10;
+                            const sectionHeight = section.offsetHeight;
+                            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                                current = '#' + section.getAttribute('id');
+                            }
+                        });
+                    }
+
+                    desktopNavLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === current) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+
+                // 导航栏滚动效果
+                if (topNav && navContainer && navTitle) {
+                    if (scrollY > 50) {
+                        topNav.classList.add('scrolled');
+                        navContainer.classList.add('scrolled');
+                        navTitle.classList.add('scrolled');
+                    } else {
+                        topNav.classList.remove('scrolled');
+                        navContainer.classList.remove('scrolled');
+                        navTitle.classList.remove('scrolled');
+                    }
+                }
+
+                // 回到顶部按钮
+                if (backToTopButton) {
+                    if (scrollY > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                }
+
+                scrollTicking = false;
+            });
+            scrollTicking = true;
         }
-    });
+    };
 }
 
 function setupMobileMenu() {
@@ -728,8 +757,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     updateLastCommitDate();
     setupSmoothScrolling();
-    handleScroll();
-    handleNavbarScroll();
     setupMobileMenu();
     disableUnderReviewLinks();
     setupPublicationsFilter();
@@ -834,14 +861,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!backToTopButton) return;
 
-    // 监听滚动事件
-    window.addEventListener('scroll', function () {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
+    // 滚动监听已合并到统一处理器中
 
     // 点击事件 - 优化：减少延迟，使用更快的滚动
     backToTopButton.addEventListener('click', function () {
