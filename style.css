@@ -458,20 +458,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(to right, rgba(240, 240, 235, 0.4) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(240, 240, 235, 0.4) 1px, transparent 1px);
-    background-size: 20px 20px;
-    z-index: -1;
-    pointer-events: none;
-    transition: background-image 0.3s ease;
-} */
 
 /* 暗色模式样式 */
 [data-theme="dark"] body {
@@ -1602,8 +1588,10 @@ section[id] {
 .pub-filter-header {
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 /* 年份筛选按钮容器 */
@@ -1611,9 +1599,12 @@ section[id] {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin-top: 10px;
+    margin-top: 0;
 }
+.year-filter-buttons button {
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
 
+}
 /* 年份筛选隐藏类 */
 .year-hidden {
     display: none !important;
@@ -1670,7 +1661,7 @@ section[id] {
 
 /* Corresponding Author Note */
 .corresponding-author-note {
-    font-size: 16px;
+    font-size: 16.848px;
     color: #666;
     font-style: italic;
     margin: 0;
@@ -2425,6 +2416,13 @@ section[id] {
 
     .container {
         padding: 60px 15px 20px;
+    }
+
+    /* 移动端布局调整 */
+    .pub-filter-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
     }
 
     /* 移动端年份筛选按钮样式 */
@@ -3576,6 +3574,13 @@ section[id] {
 @media (max-width: 500px) {
     .top-nav { height: 48px; }
     .nav-container { height: 48px; padding: 0 10px; }
+
+    /* 小屏幕布局调整 */
+    .pub-filter-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 
     /* 小屏幕年份筛选按钮样式 */
     .year-filter-btn {
