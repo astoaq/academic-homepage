@@ -1,7 +1,5 @@
-# Academic Homepage 
-![https://img.shields.io/github/stars/Louaq/academic-homepage
-](https://img.shields.io/github/stars/Louaq/academic-homepage
-)
+# Academic Homepage ![https://img.shields.io/github/stars/Louaq/academic-homepage](https://img.shields.io/github/stars/Louaq/academic-homepage)
+
 
 > Demo: [https://yangyang.wiki](https://yangyang.wiki)
 
