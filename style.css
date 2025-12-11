@@ -645,6 +645,14 @@ body {
     color: #FF6B35;
 }
 
+.profile-link-item.steam-link i {
+    color: #1b2838; /* Steam深蓝色 */
+}
+
+.profile-link-item.steam-link:hover i {
+    color: #1b2838;
+}
+
 /* Right Content */
 .right-content {
     flex: 1;
@@ -3281,6 +3289,14 @@ section[id] {
 
 .social-icon.openreview-icon:hover i {
     color: #e55a2b;
+}
+
+.social-icon.steam-icon i {
+    color: #1b2838; /* Steam深蓝色 */
+}
+
+.social-icon.steam-icon:hover i {
+    color: #171a21;
 }
 
 /* 邮件复制成功提示 */
