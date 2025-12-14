@@ -636,6 +636,13 @@ body {
 .profile-link-item.orcid-link:hover i {
     color: #a6ce39;
 }
+.profile-link-item.openreview-link i {
+    color: #FF6B35;
+}
+
+.profile-link-item.openreview-link:hover i {
+    color: #FF6B35;
+}
 .profile-link-item.steam-link i {
     color: #1b2838; /* Steam深蓝色 */
 }
