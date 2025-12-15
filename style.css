@@ -741,7 +741,7 @@ body {
 
 .notice-box .notice-content {
     flex: 1;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
     color: #2c3e50;
     font-weight: 450;
@@ -765,7 +765,7 @@ body {
     }
 
     .notice-box .notice-content {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 /* 小屏幕设备优化：避免两端对齐导致的文字间距过大问题 */
@@ -2633,7 +2633,7 @@ section[id] {
     .service-list li {
         padding: 6px 0;
         padding-left: 15px;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 1.4;
     }
 
