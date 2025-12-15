@@ -702,66 +702,79 @@ body {
 /* Notice Box - Contact Invitation */
 .notice-box {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: linear-gradient(135deg, #f8fbff 0%, #f0f7ff 100%);
-    border-radius: 12px;
-    padding: 18px 20px;
-    margin: 16px 0 8px 0;
-    box-shadow: 0 2px 12px rgba(74, 144, 217, 0.1),
-                0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-direction: column;
+    background: #ffffff;
+    border-left: 4px solid #1A73E8;
+    border-radius: 0;
+    padding: 1px 10px;
     position: relative;
-    overflow: hidden;
 }
 
 .notice-box::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(74, 144, 217, 0.03) 100%);
-    pointer-events: none;
+    display: none;
 }
 
 .notice-box:hover {
-    box-shadow: 0 6px 20px rgba(74, 144, 217, 0.15),
-                0 2px 6px rgba(0, 0, 0, 0.08);
-    border-left-color: #3a7fc8;
+    box-shadow: none;
+    border-left-color: #1A73E8;
 }
 
-.notice-box .notice-icon {
-    font-size: 24px;
-    flex-shrink: 0;
-    margin-top: 2px;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+.notice-box .notice-header {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1A73E8;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+    position: relative;
+    padding-left: 24px;
+}
+
+.notice-box .notice-header:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: #1A73E8;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill='var(--admonitions-color-tip)' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z'%3E%3C/path%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill='var(--admonitions-color-tip)' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z'%3E%3C/path%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
 }
 
 .notice-box .notice-content {
-    flex: 1;
     font-size: 16px;
-    line-height: 1.7;
-    color: #2c3e50;
-    font-weight: 450;
+    line-height: 1.6;
+    color: #000000;
+    font-weight: 400;
     letter-spacing: 0.01em;
 }
 
 .notice-box .notice-content .highlight-text {
-    color: #3a7fc8;
-    font-weight: 600;
+    color: #1A73E8;
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {
     .notice-box {
         padding: 14px 16px;
-        gap: 12px;
         margin: 12px 0 6px 0;
     }
 
-    .notice-box .notice-icon {
-        font-size: 20px;
+    .notice-box .notice-header {
+        font-size: 15px;
+        padding-left: 22px;
+    }
+
+    .notice-box .notice-header:before {
+        width: 14px;
+        height: 14px;
     }
 
     .notice-box .notice-content {
