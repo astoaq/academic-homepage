@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yangyang.wiki/sitemap.xml
+Sitemap: https://yangyang.wiki/sitemap.xml    
 
 
