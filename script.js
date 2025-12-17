@@ -381,6 +381,26 @@ function disableUnderReviewLinks() {
     });
 }
 
+// 动态计算并更新年份数量（修复：避免 updateYearCounts 未定义导致后续初始化中断）
+function updateYearCounts() {
+    const publicationsList = document.querySelector('.publications-list');
+    if (!publicationsList) return;
+
+    const yearHeaders = Array.from(publicationsList.querySelectorAll('.year-header[data-year]'));
+    if (yearHeaders.length === 0) return;
+
+    yearHeaders.forEach(header => {
+        const year = header.getAttribute('data-year');
+        if (!year) return;
+
+        const count = publicationsList.querySelectorAll(`.publication-item[data-year="${year}"]`).length;
+        const h3 = header.querySelector('h3');
+        if (!h3) return;
+
+        h3.textContent = `${year} (${count})`;
+    });
+}
+
 // Publications 初始化 - 显示所有文章和年份标题
 function setupPublicationsFilter() {
     const publicationsList = document.querySelector('.publications-list');
