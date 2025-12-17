@@ -72,7 +72,6 @@ async function updateLastCommitDate() {
             document.getElementById('last-updated').textContent = currentDate;
         }
     } catch (error) {
-        console.log('Failed to fetch commit date:', error);
         const now = new Date();
         const options = {
             year: 'numeric',
@@ -381,26 +380,6 @@ function disableUnderReviewLinks() {
     });
 }
 
-// 动态计算并更新年份数量（修复：避免 updateYearCounts 未定义导致后续初始化中断）
-function updateYearCounts() {
-    const publicationsList = document.querySelector('.publications-list');
-    if (!publicationsList) return;
-
-    const yearHeaders = Array.from(publicationsList.querySelectorAll('.year-header[data-year]'));
-    if (yearHeaders.length === 0) return;
-
-    yearHeaders.forEach(header => {
-        const year = header.getAttribute('data-year');
-        if (!year) return;
-
-        const count = publicationsList.querySelectorAll(`.publication-item[data-year="${year}"]`).length;
-        const h3 = header.querySelector('h3');
-        if (!h3) return;
-
-        h3.textContent = `${year} (${count})`;
-    });
-}
-
 // Publications 初始化 - 显示所有文章和年份标题
 function setupPublicationsFilter() {
     const publicationsList = document.querySelector('.publications-list');
@@ -631,7 +610,6 @@ function setupBibtexPanel() {
                         restoreCopyIcon();
                     }, 2000);
                 }).catch(err => {
-                    console.error('复制失败:', err);
                     // 备用方案：使用传统方法
                     const textArea = document.createElement('textarea');
                     textArea.value = text;
@@ -648,7 +626,6 @@ function setupBibtexPanel() {
                             restoreCopyIcon();
                         }, 2000);
                     } catch (err) {
-                        console.error('备用复制方法也失败:', err);
                     }
                     document.body.removeChild(textArea);
                 });
@@ -733,7 +710,6 @@ function setupEmailCopy() {
                 emailCopyToast.classList.remove('show');
             }, 2000);
         }).catch(err => {
-            console.error('复制失败:', err);
             // 备用方案：使用传统方法
             const textArea = document.createElement('textarea');
             textArea.value = emailAddress;
@@ -756,7 +732,7 @@ function setupEmailCopy() {
                     emailCopyToast.classList.remove('show');
                 }, 2000);
             } catch (err) {
-                console.error('备用复制方法也失败:', err);
+
             }
             document.body.removeChild(textArea);
         });
@@ -774,7 +750,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setupSmoothScrolling();
     setupMobileMenu();
     disableUnderReviewLinks();
-    updateYearCounts(); // 动态计算并更新年份数量
     setupPublicationsFilter();
     setupBibtexPanel(); // 初始化BibTeX面板
     setupEmailCopy(); // 初始化邮件复制功能
